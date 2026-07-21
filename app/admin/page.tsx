@@ -137,7 +137,7 @@ export default async function AdminPage() {
                         <td className="px-5 py-3">
                           <AppointmentStatusSelect
                             id={appt.id}
-                            status={appt.status}
+                            status={appt.status as "pending" | "confirmed" | "cancelled"}
                           />
                         </td>
                       </tr>

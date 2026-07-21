@@ -135,13 +135,31 @@ export async function findAppointmentById(
   return prisma.appointment.findUnique({ where: { id } });
 }
 
+/* export async function updateAppointmentStatus(
+  id: string,
+  status: "pending" | "confirmed" | "cancelled", // Ensure only valid statuses are accepted
+if (!['pending', 'confirmed', 'cancelled'].includes(status)) {
+  throw new Error('Invalid status value');
+}
+) {
+  await prisma.appointment.update({ where: { id }, data: { status } });
+}
+ */
+export async function deleteAppointment(id: string) {
+  await prisma.appointment.delete({ where: { id } });
+}
+
+
 export async function updateAppointmentStatus(
   id: string,
   status: "pending" | "confirmed" | "cancelled",
 ) {
-  await prisma.appointment.update({ where: { id }, data: { status } });
-}
+  if (!["pending", "confirmed", "cancelled"].includes(status)) {
+    throw new Error("Invalid status value");
+  }
 
-export async function deleteAppointment(id: string) {
-  await prisma.appointment.delete({ where: { id } });
+  await prisma.appointment.update({
+    where: { id },
+    data: { status },
+  });
 }
