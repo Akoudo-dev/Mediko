@@ -3,8 +3,9 @@ import { requireAdmin } from "@/lib/require-admin";
 import {
   deleteAppointment,
   updateAppointmentStatus,
-  type Appointment,
 } from "@/lib/repository";
+
+type Status = "pending" | "confirmed" | "cancelled";
 
 export async function PATCH(
   req: Request,
@@ -17,13 +18,15 @@ export async function PATCH(
 
   const { id } = await params;
   const body = await req.json().catch(() => null);
-  const status = body?.status as Appointment["status"] | undefined;
+
+  const status = body?.status as Status | undefined;
 
   if (!status || !["pending", "confirmed", "cancelled"].includes(status)) {
     return NextResponse.json({ error: "Statut invalide." }, { status: 400 });
   }
 
   await updateAppointmentStatus(id, status);
+
   return NextResponse.json({ ok: true });
 }
 
@@ -37,6 +40,8 @@ export async function DELETE(
   }
 
   const { id } = await params;
+
   await deleteAppointment(id);
+
   return NextResponse.json({ ok: true });
 }
