@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1e1e1e;
+
+  /* Brand palette pulled from the Figma design tokens */
+  --color-brand-blue: #0086ff;
+  --color-brand-blue-light: #3d9df1;
+  --color-brand-navy: #234a6b;
+  --color-brand-footer: #13324f;
+  --color-brand-footer-bottom: #1e3c58;
+  --color-bg-tint: #ecf6ff;
+  --color-bg-tint-alt: #f9fcff;
+  --color-bg-tint-soft: #f6f9fe;
+  --color-text-muted: #757575;
+  --color-footer-muted: #9babba;
+
+  --font-plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-blue-light: var(--color-brand-blue-light);
+  --color-brand-navy: var(--color-brand-navy);
+  --color-brand-footer: var(--color-brand-footer);
+  --color-brand-footer-bottom: var(--color-brand-footer-bottom);
+  --color-bg-tint: var(--color-bg-tint);
+  --color-bg-tint-alt: var(--color-bg-tint-alt);
+  --color-bg-tint-soft: var(--color-bg-tint-soft);
+  --color-text-muted: var(--color-text-muted);
+  --color-footer-muted: var(--color-footer-muted);
+
+  --font-display: var(--font-plus-jakarta-sans);
+  --font-body: var(--font-inter);
+  --font-logo: var(--font-open-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
